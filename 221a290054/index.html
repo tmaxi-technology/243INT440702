@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Truyện Tranh Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .search-box input {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    .slideshow {
+      background: url('https://image-3.uhdpaper.com/wallpaper/anime-girl-night-city-alone-4k-wallpaper-uhdpaper.com-260@3@a.jpg') center/cover no-repeat;
+      height: 300px;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .section {
+      padding: 20px 30px;
+    }
+    .section h2 {
+      margin-bottom: 10px;
+    }
+    .manga-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 15px;
+    }
+    .manga-card {
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .manga-card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .manga-card .title {
+      margin-top: 8px;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">📚 Truyện Hay</div>
+    <nav>
+      <a href="#">Trang chủ</a>
+      <a href="#">Thể loại</a>
+      <a href="#">Xếp hạng</a>
+      <a href="#">Đăng nhập</a>
+    </nav>
+    <div class="search-box">
+      <input type="text" placeholder="Tìm truyện...">
+    </div>
+  </header>
+
+  <!-- SLIDESHOW -->
+  <div class="slideshow">
+    Top truyện nổi bật trong tuần!
+  </div>
+
+  <!-- MỚI CẬP NHẬT -->
+  <div class="section">
+    <h2>📌 Mới cập nhật</h2>
+    <div class="manga-list">
+      <div class="manga-card">
+        <img src="https://occ-0-8407-92.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABRKIQnGja8FW7HtFjgOF_TmYAR_dn3eeN2Cayj3Gm2kEhjSETNusxVJj712wh_n7reHNrt3Bt6_S_U7jF4h8ugUgeXYHpcqbzHxO.jpg?r=485" alt="Truyện 1">
+        <div class="title">One Piece - Chap 1110</div>
+      </div>
+      <div class="manga-card">
+        <img src="https://wibu.com.vn/wp-content/uploads/2024/09/jujutsu-kaisen-rotated.jpg" alt="Truyện 2">
+        <div class="title">Jujutsu Kaisen - Chap 260</div>
+      </div>
+      <div class="manga-card">
+        <img src="https://mihanoi.vn/wp-content/uploads/2025/01/solo-leveling-mua-2-1-min.png" alt="Truyện 3">
+        <div class="title">Solo Leveling - Chap 200</div>
+      </div>
+      <div class="manga-card">
+        <img src="https://cdn.tuoitrethudo.vn/stores/news_dataimages/tuoitrethudocomvn/102017/02/16/ngo-ngang-voi-nhung-bi-mat-tu-meo-u-doraemon-15-.7423.jpg" alt="Truyện 4">
+        <div class="title">Doraemon - Chap 500</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUYỆN HOT -->
+  <div class="section">
+    <h2>🔥 Đang hot</h2>
+    <div class="manga-list">
+      <!-- Có thể thêm nhiều card -->
+      <div class="manga-card">
+        <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2025/01/Wind-Breaker-Rebel-Heroes.jpg" alt="Truyện Hot">
+        <div class="title">Wind Breaker</div>
+      </div>
+      <div class="manga-card">
+        <img src="https://cdn-media.sforum.vn/storage/app/media/blue-lock-project-thumbnail.jpg" alt="Truyện Hot">
+        <div class="title">Blue Lock</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Truyện Hay Online. Liên hệ: Vu Tuan Huy
+  </footer>
+
+</body>
+</html>
