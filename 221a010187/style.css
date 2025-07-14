@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    min-height: 100vh; 
+    background-color: #f0f2f5; 
+}
+
+.menu-bar {
+    display: flex; 
+    background-color: #333; 
+    padding: 0; 
+    margin: 0; 
+    width: fit-content; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.192); 
+    border-radius: 5px; 
+    overflow: hidden; 
+}
+
+.menu-item {
+    color: #fff; 
+    padding: 10px 15px; 
+    text-decoration: none; 
+    white-space: nowrap; 
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    font-size: 14px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+}
+
+
+.menu-item:hover {
+    background-color: #008CBA; 
+    color: #fff; 
+}
+
+
+.menu-item.active {
+    background-color: #4CAF50;
+    color: #fff;
+}
