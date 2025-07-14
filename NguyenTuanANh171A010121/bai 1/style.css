@@ -1,0 +1,64 @@
+/* Một số kiểu cơ bản để dễ nhìn hơn */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    color: #0056b3;
+}
+
+p {
+    line-height: 1.6;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Thanh chứa các công nghệ */
+.tech-bar {
+    margin-top: 30px;
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex; /* Sắp xếp các mục theo hàng ngang */
+    flex-wrap: wrap; /* Cho phép các mục xuống dòng nếu không đủ chỗ */
+    gap: 15px; /* Khoảng cách giữa các mục */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Kiểu cho mỗi mục công nghệ */
+.tech-bar span {
+    padding: 8px 15px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    cursor: pointer; /* Biểu tượng con trỏ khi di chuột qua */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    font-weight: bold;
+    color: #495057;
+}
+
+/* HIỆU ỨNG DI CHUỘT (HOVER EFFECT) */
+/* Khi di chuột qua các thẻ span trong .tech-bar, nền sẽ đổi màu xanh */
+.tech-bar span:hover {
+    background-color: #007bff; /* Đổi nền thành màu xanh */
+    color: white; /* Đổi màu chữ thành trắng để dễ đọc */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    transform: translateY(-2px); /* Hiệu ứng nhấc nhẹ lên */
+}
+
+/* Bạn cũng có thể áp dụng hiệu ứng hover cho các đoạn văn bản khác nếu muốn */
+p:hover {
+    background-color: #e0f7fa; /* Ví dụ: nền xanh nhạt cho đoạn văn */
+    padding: 2px 5px; /* Thêm padding nhẹ */
+    border-radius: 3px;
+}

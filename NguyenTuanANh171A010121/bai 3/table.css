@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2 {
+    color: #0056b3;
+}
+
+table {
+    width: 80%; /* Chiều rộng của bảng */
+    border-collapse: collapse; /* Gộp các đường viền của ô */
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff; /* Nền trắng cho bảng */
+}
+
+/* Kiểu cho tiêu đề bảng (header) */
+table thead tr {
+    background-color: #009879; /* Màu nền xanh lá cây */
+    color: #ffffff; /* Màu chữ trắng */
+    text-align: left;
+    font-weight: bold;
+}
+
+/* Kiểu cho ô tiêu đề và ô dữ liệu */
+table th,
+table td {
+    padding: 12px 15px;
+    border: 1px solid #dddddd; /* Đường viền nhẹ cho các ô */
+}
+
+/* Kiểu cho các hàng (row) */
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Kiểu cho các hàng xen kẽ (tùy chọn) */
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3; /* Màu nền nhẹ cho hàng chẵn */
+}
+
+/* HIỆU ỨNG DI CHUỘT (HOVER EFFECT) */
+/* Khi di chuột qua bất kỳ hàng nào trong phần thân bảng */
+table tbody tr:hover {
+    background-color: #cccccc; /* Nền chuyển sang màu xám */
+    cursor: pointer; /* Thay đổi con trỏ thành biểu tượng bàn tay */
+}
+
+/* Kiểu cho hàng cuối cùng trong tbody (tùy chọn) */
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
