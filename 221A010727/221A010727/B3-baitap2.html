@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Exercise</title>
+  <style>
+    body {
+      background-color: #f9fafb;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background-color: #1f2937;
+      color: white;
+      width: 520px;
+      border-radius: 12px;
+      padding: 30px 30px 25px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .header {
+      text-align: center;
+      position: relative;
+    }
+
+    .header h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .header .question-mark {
+      position: absolute;
+      top: -5px;
+      right: 0;
+      background-color: #374151;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 13px;
+      text-align: center;
+      line-height: 20px;
+      cursor: pointer;
+    }
+
+    .question {
+      font-size: 15px;
+      margin: 20px 0 15px;
+    }
+
+    .option {
+      background-color: #374151;
+      border-radius: 6px;
+      padding: 12px 15px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .option:hover {
+      background-color: #4b5563;
+    }
+
+    .option input[type="radio"] {
+      margin-right: 12px;
+      accent-color: #10b981;
+      transform: scale(1.2);
+    }
+
+    .submit-btn {
+      background-color: #10b981;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background-color: #059669;
+    }
+
+    .green-link {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #10b981;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .green-link:hover {
+      background-color: #059669;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>Exercise</h2>
+      <div class="question-mark">?</div>
+    </div>
+
+    <p class="question">What is a correct syntax for an HTML hyperlink?</p>
+
+    <label class="option">
+      <input type="radio" name="answer">
+      &lt;a href='/home.htm'&gt;Visit W3Schools.com&lt;/a&gt;
+    </label>
+
+    <label class="option">
+      <input type="radio" name="answer">
+      &lt;link href='/home.htm'&gt;Visit W3Schools.com&lt;/link&gt;
+    </label>
+
+    <label class="option">
+      <input type="radio" name="answer">
+      &lt;alink href='/home.htm'&gt;Visit W3Schools.com&lt;/alink&gt;
+    </label>
+
+    <button class="submit-btn">Submit Answer »</button>
+    <br>
+    <a href="#" class="green-link">See all HTML Exercises</a>
+  </div>
+</body>
+</html>
