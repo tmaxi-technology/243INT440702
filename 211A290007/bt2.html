@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+    }
+
+    .quiz-container {
+      background-color: #2f3e4e;
+      color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .quiz-container h2 {
+      margin-top: 0;
+    }
+
+    .options {
+      margin: 20px 0;
+    }
+
+    .option {
+      background-color: #444c5e;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .option input {
+      margin-right: 10px;
+    }
+
+    .option:hover {
+      background-color: #556177;
+    }
+
+    .submit-btn {
+      background-color: #04AA6D;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background-color: #03995f;
+    }
+
+    .see-all {
+      margin-top: 15px;
+      display: inline-block;
+      background-color: #dff0e0;
+      color: #0f6e40;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h2>Exercise</h2>
+    <p>What is a correct syntax for an HTML hyperlink?</p>
+
+    <div class="options">
+      <label class="option">
+        <input type="radio" name="answer" checked>
+        &lt;a href='/home.htm'&gt;Visit W3Schools.com!&lt;/a&gt;
+      </label>
+      <label class="option">
+        <input type="radio" name="answer">
+        &lt;link href='/home.htm'&gt;Visit W3Schools.com!&lt;/link&gt;
+      </label>
+      <label class="option">
+        <input type="radio" name="answer">
+        &lt;alink href='/home.htm'&gt;Visit W3Schools.com!&lt;/alink&gt;
+      </label>
+    </div>
+
+    <button class="submit-btn">Submit Answer »</button>
+
+    <br><br>
+    <a href="#" class="see-all">See all HTML Exercises</a>
+  </div>
+
+</body>
+</html>
