@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML Exercise</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #2b3a42;
+      color: white;
+      padding: 30px;
+      margin: 0;
+    }
+
+    .exercise-box {
+      background-color: #3c4b57;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .exercise-box h2 {
+      margin-top: 0;
+    }
+
+    .option {
+      background-color: #2e3a45;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .option:hover {
+      background-color: #405564;
+    }
+
+    .submit-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: Consolas, monospace;
+      background-color: transparent;
+      color: #ddd;
+    }
+
+    code {
+      background-color: transparent;
+      color: #ddd;
+    }
+
+    .result-screen {
+      display: none;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .result-correct {
+      background-color: #27ae60;
+    }
+
+    .result-wrong {
+      background-color: #e74c3c;
+    }
+
+    .result-screen h2 {
+      margin-bottom: 20px;
+    }
+
+    .result-btn {
+      background-color: #34495e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .result-btn:hover {
+      background-color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="question-screen" class="exercise-box">
+    <h2>Exercise</h2>
+    <p>What is a correct syntax for an HTML hyperlink?</p>
+
+    <label class="option">
+      <input type="radio" name="answer" value="correct">
+      <pre><code>&lt;a href='/home.htm'&gt;Visit W3Schools.com!&lt;/a&gt;</code></pre>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="answer" value="wrong">
+      <pre><code>&lt;link href='/home.htm'&gt;Visit W3Schools.com!&lt;/link&gt;</code></pre>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="answer" value="wrong">
+      <pre><code>&lt;alink href='/home.htm'&gt;Visit W3Schools.com!&lt;/alink&gt;</code></pre>
+    </label>
+
+    <button class="submit-btn" onclick="submitAnswer()">Submit Answer »</button>
+  </div>
+
+  <div id="correct-screen" class="result-screen result-correct">
+    <h2>Correct Answer!</h2>
+    <button class="result-btn" onclick="resetQuiz()">Next Question »</button>
+  </div>
+
+  <div id="wrong-screen" class="result-screen result-wrong">
+    <h2>Wrong Answer!</h2>
+    <button class="result-btn" onclick="goBack()">Try Again</button>
+  </div>
+
+  <script>
+    function submitAnswer() {
+      const answers = document.getElementsByName('answer');
+      let selectedValue = null;
+      for (let ans of answers) {
+        if (ans.checked) {
+          selectedValue = ans.value;
+          break;
+        }
+      }
+
+      if (!selectedValue) {
+        alert("Please select an answer!");
+        return;
+      }
+
+      document.getElementById('question-screen').style.display = 'none';
+      if (selectedValue === 'correct') {
+        document.getElementById('correct-screen').style.display = 'block';
+      } else {
+        document.getElementById('wrong-screen').style.display = 'block';
+      }
+    }
+
+    function resetQuiz() {
+      // For demo, just reset back to question
+      document.getElementById('correct-screen').style.display = 'none';
+      document.getElementById('question-screen').style.display = 'block';
+
+      const answers = document.getElementsByName('answer');
+      for (let ans of answers) {
+        ans.checked = false;
+      }
+    }
+
+    function goBack() {
+      document.getElementById('wrong-screen').style.display = 'none';
+      document.getElementById('question-screen').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
