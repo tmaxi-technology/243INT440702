@@ -1,0 +1,68 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+
+  .container-fluid {
+    height: 100vh;
+  }
+
+  .left-side {
+    background-image: url('https://portal.vhu.edu.vn/assets/img/vhu-building.jpg'); /* thay ảnh theo ý bạn */
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+  }
+
+  .right-side {
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .login-box {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .logo {
+    display: block;
+    margin: 0 auto 20px;
+    width: 80px;
+  }
+
+  .login-title {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .btn-login {
+    background-color: #003b8b;
+    color: white;
+    width: 100%;
+  }
+
+  .btn-office {
+    background-color: #e24e1b;
+    color: white;
+    width: 100%;
+  }
+
+  .form-check-label {
+    font-size: 0.9rem;
+  }
+
+  .text-footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: gray;
+    margin-top: 15px;
+  }
