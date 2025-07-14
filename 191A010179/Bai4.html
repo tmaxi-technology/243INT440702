@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Tin Tức</title>
+    <title>Bài tập 4</title>
+    <style>
+        .login-container {
+          width: 300px;
+          margin: 100px auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          box-shadow: 2px 2px 10px #aaa;
+        }
+    
+        input[type="text"], input[type="password"] {
+          width: 100%;
+          padding: 8px;
+          margin: 10px 0;
+        }
+    
+        input[type="submit"]:hover {
+          background-color: #007BFF;
+          color: white;
+          cursor: pointer;
+        }
+      </style>
 </head>
 <body>
-    <h1>Trang Tin Tức Hằng Ngày</h1>
-    <ul>
-        <li><a href="#">Tin Số 1</a></li>
-        <li><a href="#">Tin Số 2</a></li>
-        <li><a href="#">Tin Số 3</a></li>
-    </ul>
-
-    <h2>Tiêu Đề Tin Tức Số 1</h2>
-    <p>Đây là nội dung của tin tức số 1...</p>
-    <p>Đăng ngày: 06/10/2024</p>
-
-    <h2>Tiêu Đề Tin Tức Số 2</h2>
-    <p>Đây là nội dung của tin tức số 2...</p>
-    <p>Đăng ngày: 05/10/2024</p>
-
-    <h2>Tiêu Đề Tin Tức Số 3</h2>
-    <p>Đây là nội dung của tin tức số 3...</p>
-    <p>Đăng ngày: 04/10/2024</p>
-
-    <p>Bản quyền © 2024 - Trang Tin Tức Hằng Ngày. Mọi quyền được bảo lưu.</p>
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        <form>
+          <input type="text" placeholder="Tên đăng nhập">
+          <input type="password" placeholder="Mật khẩu">
+          <input type="submit" value="Đăng nhập">
+        </form>
+      </div>
 </body>
 </html>
