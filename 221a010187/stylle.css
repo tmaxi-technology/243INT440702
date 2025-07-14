@@ -1,0 +1,45 @@
+/* Kiểu dáng chung cho body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px; /* Tạo khoảng trống xung quanh trang */
+    background-color: #f4f4f4; /* Màu nền nhạt cho trang */
+}
+
+/* Kiểu dáng cho bảng */
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; /* Font chữ cho bảng */
+    border-collapse: collapse; /* Gộp các đường viền của ô để chúng trông gọn gàng hơn */
+    width: 80%; /* Chiều rộng bảng là 80% của không gian khả dụng */
+    margin: 20px auto; /* Căn giữa bảng theo chiều ngang và tạo margin trên/dưới */
+    box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Thêm đổ bóng nhẹ cho bảng */
+    background-color: #fff; /* Nền trắng cho bảng */
+}
+
+/* Kiểu dáng cho các ô dữ liệu và ô tiêu đề */
+#customers td, #customers th {
+    border: 1px solid #ddd; /* Đường viền mỏng màu xám nhạt cho các ô */
+    padding: 12px; /* Khoảng đệm bên trong mỗi ô */
+    text-align: left; /* Căn lề trái cho nội dung trong ô */
+}
+
+/* Kiểu dáng riêng cho các ô tiêu đề (th) */
+#customers th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #4CAF50; /* Màu nền xanh lá cây cho tiêu đề bảng */
+    color: white; /* Màu chữ trắng cho tiêu đề */
+}
+
+/* (Tùy chọn) Kiểu dáng cho các dòng chẵn (để tạo hiệu ứng sọc như ví dụ W3Schools) */
+#customers tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+/* ******************************************* */
+/* YÊU CẦU CỦA BÀI TẬP: HIỆU ỨNG KHI DI CHUỘT */
+/* ******************************************* */
+#customers tr:hover {
+    background-color: #e0e0e0; /* Màu xám khi di chuột qua */
+    transition: background-color 0.3s ease; /* Tạo hiệu ứng chuyển đổi màu mượt mà trong 0.3 giây */
+    cursor: pointer; /* Thay đổi con trỏ chuột thành biểu tượng bàn tay khi di qua dòng */
+}
