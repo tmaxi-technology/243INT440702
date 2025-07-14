@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML Hyperlink Quiz</title>
+  <link rel="stylesheet" href="bt2.css">
+</head>
+<body>
+  <div class="quiz-box">
+    <h2>Exercise</h2>
+    <p>What is a correct syntax for an HTML hyperlink?</p>
+
+    <form id="quiz-form">
+      <label class="option">
+        <input type="radio" name="answer" value="correct" />
+        &lt;a href="/home.htm"&gt;Visit W3Schools.com&lt;/a&gt;
+      </label>
+
+      <label class="option">
+        <input type="radio" name="answer" value="wrong1" />
+        &lt;link href="/home.htm"&gt;Visit W3Schools.com&lt;/link&gt;
+      </label>
+
+      <label class="option">
+        <input type="radio" name="answer" value="wrong2" />
+        &lt;alink href="/home.htm"&gt;Visit W3Schools.com&lt;/alink&gt;
+      </label>
+
+      <button type="submit">Submit Answer</button>
+      <p id="result"></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("quiz-form").onsubmit = function (e) {
+      e.preventDefault();
+      const value = document.querySelector('input[name="answer"]:checked');
+      const result = document.getElementById("result");
+      if (!value) {
+        result.textContent = "Please select an answer!";
+      } else if (value.value === "correct") {
+        result.textContent = "✅ Correct!";
+        result.style.color = "green";
+      } else {
+        result.textContent = "❌ Wrong. Try again!";
+        result.style.color = "red";
+      }
+    };
+  </script>
+</body>
+</html>
