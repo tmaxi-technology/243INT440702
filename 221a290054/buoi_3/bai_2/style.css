@@ -1,0 +1,80 @@
+/* General body and font styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 20px;
+    color: #000;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  /* Container for exercise */
+  .exercise-container {
+    background-color: #273241;
+    color: white;
+    max-width: 600px;
+    padding: 30px 40px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  /* Exercise header */
+  .exercise-container h2 {
+    font-weight: normal;
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Options for answers */
+  .option {
+    display: block;
+    background-color: #3b4a66;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 0.9rem;
+  }
+  
+  /* Radio button spacing */
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  /* Submit button styling */
+  button {
+    background-color: #1a9a50;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #148a43;
+  }
+  
+  /* Link for see all exercises */
+  .see-exercises {
+    margin-top: 15px;
+    display: inline-block;
+    background-color: #1a9a50;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .see-exercises:hover {
+    background-color: #148a43;
+  }
+  
