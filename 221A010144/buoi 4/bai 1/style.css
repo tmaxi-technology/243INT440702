@@ -1,0 +1,94 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+#calculator-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 320px; /* Adjust as needed */
+    padding: 20px;
+}
+
+#display {
+    background-color: #f7f7f7;
+    color: #333;
+    font-size: 3em;
+    text-align: right;
+    padding: 20px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Base style for all buttons within the grid */
+#buttons-grid button {
+    background-color: #f9f9f9;
+    color: #333;
+    border: none;
+    padding: 15px 0;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    aspect-ratio: 1 / 1; /* Makes buttons square */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttons-grid button:hover {
+    background-color: #e9e9e9;
+}
+
+#buttons-grid button:active {
+    background-color: #d9d9d9;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific button styles using IDs */
+#mc, #mr, #m-plus, #m-minus, #ms {
+    color: #666;
+    font-size: 0.9em;
+}
+
+#percent, #one-over-x, #x-squared, #square-root, #divide, #multiply, #subtract, #add, #plus-minus {
+    color: #555;
+}
+
+#ce, #c {
+    color: #C00;
+}
+
+#backspace {
+    font-size: 1.4em;
+    color: #555;
+}
+
+#equals {
+    background-color: #007bff;
+    color: white;
+}
+
+#equals:hover {
+    background-color: #0069d9;
+}
+
+#equals:active {
+    background-color: #0056b3;
+}

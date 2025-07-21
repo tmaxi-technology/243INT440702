@@ -1,0 +1,162 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px; /* Giới hạn chiều rộng tối đa */
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.form-grid {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Cột label tự động, cột input chiếm phần còn lại */
+    gap: 15px 20px; /* Khoảng cách giữa các hàng và cột */
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-row {
+    display: contents; /* Làm cho con của nó trực tiếp là item của grid */
+}
+
+.form-row label {
+    text-align: right;
+    padding-right: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; /* Bao gồm padding và border trong width */
+    transition: border-color 0.2s;
+}
+
+.form-row input[type="text"]:focus,
+.form-row input[type="email"]:focus,
+.form-row select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Radio buttons specific styling */
+.radio-row label:first-of-type { /* Label "Giới tính" */
+    grid-column: 1;
+    text-align: right;
+}
+.radio-row > div { /* Container for radio inputs and their labels */
+    grid-column: 2;
+    display: flex;
+    gap: 20px; /* Space between Nam and Nữ */
+    align-items: center;
+}
+.radio-row input[type="radio"] {
+    margin-right: 5px;
+}
+.radio-row label[for="gioiTinhNam"],
+.radio-row label[for="gioiTinhNu"] {
+    font-weight: normal; /* Override bold for radio labels */
+    text-align: left; /* Align radio labels to left */
+    padding-right: 0;
+}
+
+
+/* Button styling */
+.button-row {
+    grid-column: 1 / -1; /* Chiếm toàn bộ chiều rộng của grid */
+    text-align: center;
+    padding-top: 10px;
+}
+
+#themVaoDanhSach {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#themVaoDanhSach:hover {
+    background-color: #0056b3;
+}
+
+#themVaoDanhSach:active {
+    background-color: #004085;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Table Styling */
+#danhSachSinhVien {
+    width: 100%;
+    border-collapse: collapse; /* Loại bỏ khoảng cách giữa các ô */
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden; /* Để border-radius hoạt động với các cạnh của bảng */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#danhSachSinhVien th,
+#danhSachSinhVien td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+#danhSachSinhVien th {
+    background-color: #eef;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+#danhSachSinhVien tbody tr:nth-child(even) {
+    background-color: #f8f8f8; /* Màu nền xen kẽ cho các hàng */
+}
+
+#danhSachSinhVien tbody tr:hover {
+    background-color: #e0f2f7; /* Màu nền khi di chuột qua hàng */
+}
