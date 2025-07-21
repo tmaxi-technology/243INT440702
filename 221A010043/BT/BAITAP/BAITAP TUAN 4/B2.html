@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Sinh Viên</title>
+  <link rel="stylesheet" href="B2.css">
+  <script src="B2.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Nhập thông tin viên</h2>
+    <form id="studentForm">
+      <label>MSSV: <input type="text" id="mssv" required></label>
+      <label>Họ tên: <input type="text" id="hoTen" required></label>
+      <label>Email: <input type="email" id="email" required></label>
+      <label>Giới tính:
+        <select id="gioiTinh">
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+        </select>
+      </label>
+      <label>Nơi sinh: <input type="text" id="noiSinh" required></label>
+      <button type="submit">Thêm vào danh sách</button>
+    </form>
+
+    <h2>Danh sách sinh viên</h2>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>MSSV</th>
+          <th>Họ tên</th>
+          <th>Email</th>
+          <th>Giới tính</th>
+          <th>Nơi sinh</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</body>
+</html>
