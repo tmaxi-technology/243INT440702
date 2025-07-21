@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Segoe UI, sans-serif;
+      background: linear-gradient(to top right, #f5f7fb, #f7f2fb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      width: 320px;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    .display {
+      background: #f0f3fc;
+      color: black;
+      font-size: 3rem;
+      text-align: right;
+      padding: 20px 10px;
+      border-bottom: 2px solid #ccc;
+      height: 80px;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    button {
+      font-size: 1.1rem;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #f0f0f0;
+    }
+    .equal {
+      background: #007bff;
+      color: white;
+    }
+    .equal:hover {
+      background: #0067d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button onclick="memoryClear()">MC</button>
+      <button onclick="memoryRecall()">MR</button>
+      <button onclick="memoryAdd()">M+</button>
+      <button onclick="memorySubtract()">M−</button>
+
+      <button onclick="memoryStore()">MS</button>
+      <button onclick="press('%')">%</button>
+      <button onclick="clearEntry()">CE</button>
+      <button onclick="clearAll()">C</button>
+
+      <button onclick="backspace()">⌫</button>
+      <button onclick="press('1/x')">1/x</button>
+      <button onclick="press('x^2')">x²</button>
+      <button onclick="press('sqrt')">√</button>
+
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('/')">÷</button>
+
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('*')">×</button>
+
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('-')">−</button>
+
+      <button onclick="toggleSign()">+/-</button>
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+      <button class="equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+    let memory = 0;
+    let current = "";
+
+    function press(key) {
+      if (key === '1/x') {
+        current = (1 / parseFloat(current || display.innerText)).toString();
+      } else if (key === 'x^2') {
+        current = (Math.pow(parseFloat(current || display.innerText), 2)).toString();
+      } else if (key === 'sqrt') {
+        current = (Math.sqrt(parseFloat(current || display.innerText))).toString();
+      } else {
+        if (display.innerText === "0" || display.innerText === "Error") display.innerText = "";
+        current += key;
+      }
+      display.innerText = current;
+    }
+
+    function calculate() {
+      try {
+        current = eval(current).toString();
+        display.innerText = current;
+      } catch {
+        display.innerText = "Error";
+        current = "";
+      }
+    }
+
+    function clearEntry() {
+      current = "";
+      display.innerText = "0";
+    }
+
+    function clearAll() {
+      current = "";
+      memory = 0;
+      display.innerText = "0";
+    }
+
+    function backspace() {
+      current = current.slice(0, -1);
+      display.innerText = current || "0";
+    }
+
+    function toggleSign() {
+      if (current) {
+        current = (parseFloat(current) * -1).toString();
+        display.innerText = current;
+      }
+    }
+
+    function memoryClear() {
+      memory = 0;
+    }
+
+    function memoryRecall() {
+      current = memory.toString();
+      display.innerText = current;
+    }
+
+    function memoryAdd() {
+      memory += parseFloat(current || display.innerText);
+    }
+
+    function memorySubtract() {
+      memory -= parseFloat(current || display.innerText);
+    }
+
+    function memoryStore() {
+      memory = parseFloat(current || display.innerText);
+    }
+  </script>
+</body>
+</html>

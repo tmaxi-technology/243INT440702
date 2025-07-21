@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin sinh viên</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+        }
+        h2 {
+            font-weight: bold;
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-bottom: 20px;
+        }
+        table, td {
+            border: 1px solid #ccc;
+        }
+        td {
+            padding: 8px;
+        }
+        input[type="text"], select {
+            width: 200px;
+        }
+        .form-container {
+            background-color: #f2f2f2;
+            width: 60%;
+        }
+        .form-row {
+            display: table-row;
+        }
+        .form-cell {
+            display: table-cell;
+            padding: 8px;
+        }
+        .button-row {
+            text-align: center;
+            padding: 8px;
+        }
+        .output-table {
+            border: 1px solid #000;
+            width: 90%;
+        }
+        .output-table th, .output-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .output-table th {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Nhập thông tin sinh viên</h2>
+
+<div class="form-container">
+    <div class="form-row">
+        <div class="form-cell">MSSV</div>
+        <div class="form-cell"><input type="text" id="mssv"></div>
+    </div>
+    <div class="form-row">
+        <div class="form-cell">Họ tên</div>
+        <div class="form-cell"><input type="text" id="hoten"></div>
+    </div>
+    <div class="form-row">
+        <div class="form-cell">Email</div>
+        <div class="form-cell"><input type="text" id="email"></div>
+    </div>
+    <div class="form-row">
+        <div class="form-cell">Giới tính</div>
+        <div class="form-cell">
+            <label><input type="radio" name="gioitinh" value="Nam"> Nam</label>
+            <label><input type="radio" name="gioitinh" value="Nữ"> Nữ</label>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-cell">Nơi sinh</div>
+        <div class="form-cell">
+            <select id="noisinh">
+                <option value="Cần Thơ">Cần Thơ</option>
+                <option value="TP.HCM">TP.HCM</option>
+                <option value="Hà Nội">Hà Nội</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-cell" colspan="2" style="text-align:center;">
+            <button onclick="themSinhVien()">Thêm vào danh sách</button>
+        </div>
+    </div>
+</div>
+
+<h2>Danh sách sinh viên</h2>
+
+<table class="output-table" id="dssv">
+    <thead>
+        <tr>
+            <th>MSSV</th>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>Giới tính</th>
+            <th>Nơi sinh</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>251A010662</td>
+            <td>Đinh Hữu Hoàng</td>
+            <td>251A010662@gmail.com</td>
+            <td>Nam</td>
+            <td>TP.HCM</td>
+        </tr>
+        <tr>
+            <td>251A015574</td>
+            <td>Huỳnh Hồ Nhật</td>
+            <td>251A015574@yahoo.com</td>
+            <td>Nữ</td>
+            <td>Cần Thơ</td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function themSinhVien() {
+        const mssv = document.getElementById("mssv").value;
+        const hoten = document.getElementById("hoten").value;
+        const email = document.getElementById("email").value;
+        const gioitinhElems = document.getElementsByName("gioitinh");
+        let gioitinh = "";
+        for (const gt of gioitinhElems) {
+            if (gt.checked) {
+                gioitinh = gt.value;
+                break;
+            }
+        }
+        const noisinh = document.getElementById("noisinh").value;
+
+        if (mssv && hoten && email && gioitinh) {
+            const table = document.getElementById("dssv").getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.innerHTML = `
+                <td>${mssv}</td>
+                <td>${hoten}</td>
+                <td>${email}</td>
+                <td>${gioitinh}</td>
+                <td>${noisinh}</td>
+            `;
+
+            // Xóa dữ liệu form
+            document.getElementById("mssv").value = "";
+            document.getElementById("hoten").value = "";
+            document.getElementById("email").value = "";
+            for (const gt of gioitinhElems) gt.checked = false;
+            document.getElementById("noisinh").selectedIndex = 0;
+        } else {
+            alert("Vui lòng nhập đầy đủ thông tin.");
+        }
+    }
+</script>
+
+</body>
+</html>
