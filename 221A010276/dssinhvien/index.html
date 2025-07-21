@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Nhập thông tin sinh viên</h2>
+    <form id="studentForm">
+        <table>
+            <tr>
+                <td>MSSV</td>
+                <td><input type="text" id="mssv" required></td>
+            </tr>
+            <tr>
+                <td>Họ tên</td>
+                <td><input type="text" id="name" required></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" id="email" required></td>
+            </tr>
+            <tr>
+                <td>Giới tính</td>
+                <td>
+                    <label><input type="radio" name="gender" value="Nam" checked> Nam</label>
+                    <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Nơi sinh</td>
+                <td>
+                    <select id="place">
+                        <option value="TP.HCM">TP.HCM</option>
+                        <option value="Hà Nội">Hà Nội</option>
+                        <option value="Đà Nẵng">Đà Nẵng</option>
+                        <option value="Cần Thơ">Cần Thơ</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <button type="button" onclick="addStudent()">Thêm vào danh sách</button>
+    </form>
+
+    <h2>Danh sách sinh viên</h2>
+    <table id="studentTable" border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>MSSV</th>
+                <th>Họ tên</th>
+                <th>Email</th>
+                <th>Giới tính</th>
+                <th>Nơi sinh</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>251A010662</td>
+                <td>Đinh Hữu Hoàng</td>
+                <td>251A010662@gmail.com</td>
+                <td>Nam</td>
+                <td>TP.HCM</td>
+            </tr>
+            <tr>
+                <td>251A015574</td>
+                <td>Huỳnh Hồ Nhật</td>
+                <td>251A015574@yahoo.com</td>
+                <td>Nữ</td>
+                <td>Cần Thơ</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
