@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.calculator {
+    background-color: #333; /* Màu nền tối hơn cho máy tính */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 350px; /* Chiều rộng tổng thể của máy tính */
+    padding: 20px;
+}
+
+.display {
+    margin-bottom: 20px;
+}
+
+#result {
+    width: 100%;
+    padding: 15px;
+    font-size: 2.2em; /* Kích thước chữ lớn hơn cho màn hình */
+    text-align: right;
+    border: none;
+    border-radius: 5px;
+    background-color: #eee; /* Màu nền màn hình */
+    color: #333;
+    box-sizing: border-box;
+    cursor: default;
+    height: 60px; /* Chiều cao cố định cho màn hình */
+}
+
+.buttons {
+    display: grid;
+    /* Chia lưới chính thành 5 cột để chứa hàng memory.
+       Các hàng 4 nút sẽ được căn chỉnh trong 4 cột đầu tiên. */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 10px; /* Khoảng cách giữa các nút */
+}
+
+.btn {
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    color: #fff;
+    box-sizing: border-box;
+    height: 60px; /* Chiều cao cố định cho tất cả các nút */
+    display: flex; /* Dùng flexbox để căn giữa nội dung nút */
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:active {
+    transform: translateY(1px); /* Hiệu ứng nhấn nút */
+}
+
+/* Màu sắc các loại nút */
+.number-btn {
+    background-color: #555; /* Màu xám đậm cho số */
+}
+.number-btn:hover {
+    background-color: #777;
+}
+
+.operator-btn {
+    background-color: #f7923b; /* Màu cam cho toán tử */
+}
+.operator-btn:hover {
+    background-color: #ffb06a;
+}
+
+.function-btn {
+    background-color: #666; /* Màu xám trung bình cho các chức năng khác */
+}
+.function-btn:hover {
+    background-color: #888;
+}
+
+.memory-btn {
+    background-color: #4a4a4a; /* Màu xám nhạt hơn cho memory */
+    font-size: 0.9em;
+    padding: 10px;
+}
+.memory-btn:hover {
+    background-color: #6a6a6a;
+}
+
+.equal-btn {
+    background-color: #28a745; /* Màu xanh lá cho nút bằng */
+}
+.equal-btn:hover {
+    background-color: #218838;
+}
+
+/* --- ĐỊNH VỊ CÁC NÚT TRÊN LƯỚI --- */
+
+/* Các nút memory (hàng 1) tự động xếp vào 5 cột */
+.memory-btn {
+    grid-column: span 1; /* Mỗi nút chiếm 1 cột */
+}
+
+/* Các hàng có 4 nút: (%, CE, C, Backspace), (1/x, x², √x, ÷), ... */
+/* Chúng ta sẽ định vị chúng để chúng chiếm các cột 1, 2, 3, 4 của lưới 5 cột. */
+
+/* Hàng thứ 2: %, CE, C, Backspace */
+/* Các nút này là nút thứ 6, 7, 8, 9 trong tổng số các nút */
+.buttons > button:nth-child(6) { grid-column: 1; }
+.buttons > button:nth-child(7) { grid-column: 2; }
+.buttons > button:nth-child(8) { grid-column: 3; }
+.buttons > button:nth-child(9) { grid-column: 4; }
+
+/* Hàng thứ 3: 1/x, x², √x, ÷ */
+/* Các nút này là nút thứ 10, 11, 12, 13 */
+.buttons > button:nth-child(10) { grid-column: 1; }
+.buttons > button:nth-child(11) { grid-column: 2; }
+.buttons > button:nth-child(12) { grid-column: 3; }
+.buttons > button:nth-child(13) { grid-column: 4; }
+
+/* Hàng thứ 4: 7, 8, 9, × */
+/* Các nút này là nút thứ 14, 15, 16, 17 */
+.buttons > button:nth-child(14) { grid-column: 1; }
+.buttons > button:nth-child(15) { grid-column: 2; }
+.buttons > button:nth-child(16) { grid-column: 3; }
+.buttons > button:nth-child(17) { grid-column: 4; }
+
+/* Hàng thứ 5: 4, 5, 6, - */
+/* Các nút này là nút thứ 18, 19, 20, 21 */
+.buttons > button:nth-child(18) { grid-column: 1; }
+.buttons > button:nth-child(19) { grid-column: 2; }
+.buttons > button:nth-child(20) { grid-column: 3; }
+.buttons > button:nth-child(21) { grid-column: 4; }
+
+/* Hàng thứ 6: 1, 2, 3, + */
+/* Các nút này là nút thứ 22, 23, 24, 25 */
+.buttons > button:nth-child(22) { grid-column: 1; }
+.buttons > button:nth-child(23) { grid-column: 2; }
+.buttons > button:nth-child(24) { grid-column: 3; }
+.buttons > button:nth-child(25) { grid-column: 4; }
+
+/* Hàng thứ 7 (cuối cùng): +/-, 0, ., = */
+/* Các nút này là nút thứ 26, 27, 28, 29 */
+.buttons > button:nth-child(26) { grid-column: 1; } /* +/- */
+.buttons > button:nth-child(27) { grid-column: 2; } /* 0 */
+.buttons > button:nth-child(28) { grid-column: 3; } /* . */
+.buttons > button:nth-child(29) { grid-column: 4 / span 2; } /* = chiếm 2 cột cuối, bắt đầu từ cột 4 */

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 2: Nhập thông tin sinh viên</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bài tập 2</h1>
+
+        <div class="input-section">
+            <h2>Nhập thông tin sinh viên</h2>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label for="mssv">MSSV</label>
+                    <input type="text" id="mssv" value="251A015574">
+                </div>
+                <div class="form-group">
+                    <label for="fullName">Họ tên</label>
+                    <input type="text" id="fullName" value="Huỳnh Hồ Nhật">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" value="251A015574@yahoo.com">
+                </div>
+                <div class="form-group">
+                    <label>Giới tính</label>
+                    <div class="radio-group">
+                        <input type="radio" id="genderMale" name="gender" value="Nam">
+                        <label for="genderMale">Nam</label>
+                        <input type="radio" id="genderFemale" name="gender" value="Nữ" checked>
+                        <label for="genderFemale">Nữ</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="birthPlace">Nơi sinh</label>
+                    <select id="birthPlace">
+                        <option value="Hồ Chí Minh">TP.HCM</option>
+                        <option value="Cần Thơ" selected>Cần Thơ</option>
+                        <option value="Hà Nội">Hà Nội</option>
+                        <option value="Đà Nẵng">Đà Nẵng</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+                <button type="submit">Thêm vào danh sách</button>
+            </form>
+        </div>
+
+        <div class="list-section">
+            <h2>Danh sách sinh viên</h2>
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>MSSV</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Giới tính</th>
+                        <th>Nơi sinh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

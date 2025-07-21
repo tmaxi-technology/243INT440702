@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy tính</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="result" value="0" readonly>
+        </div>
+        <div class="buttons">
+            <button class="btn memory-btn" onclick="memoryClear()">MC</button>
+            <button class="btn memory-btn" onclick="memoryRecall()">MR</button>
+            <button class="btn memory-btn" onclick="memoryAdd()">M+</button>
+            <button class="btn memory-btn" onclick="memorySubtract()">M-</button>
+            <button class="btn memory-btn" onclick="memoryStore()">MS</button>
+
+            <button class="btn function-btn" onclick="appendOperator('%')">%</button>
+            <button class="btn function-btn" onclick="clearEntry()">CE</button>
+            <button class="btn function-btn" onclick="clearResult()">C</button>
+            <button class="btn function-btn" onclick="backspace()">&#x232B;</button>
+
+            <button class="btn function-btn" onclick="inverse()">1/x</button>
+            <button class="btn function-btn" onclick="square()">x<sup>2</sup></button>
+            <button class="btn function-btn" onclick="squareRoot()">&#x221A;x</button>
+            <button class="btn operator-btn" onclick="appendOperator('/')">&divide;</button>
+
+            <button class="btn number-btn" onclick="appendNumber('7')">7</button>
+            <button class="btn number-btn" onclick="appendNumber('8')">8</button>
+            <button class="btn number-btn" onclick="appendNumber('9')">9</button>
+            <button class="btn operator-btn" onclick="appendOperator('*')">&times;</button>
+
+            <button class="btn number-btn" onclick="appendNumber('4')">4</button>
+            <button class="btn number-btn" onclick="appendNumber('5')">5</button>
+            <button class="btn number-btn" onclick="appendNumber('6')">6</button>
+            <button class="btn operator-btn" onclick="appendOperator('-')">-</button>
+
+            <button class="btn number-btn" onclick="appendNumber('1')">1</button>
+            <button class="btn number-btn" onclick="appendNumber('2')">2</button>
+            <button class="btn number-btn" onclick="appendNumber('3')">3</button>
+            <button class="btn operator-btn" onclick="appendOperator('+')">+</button>
+
+            <button class="btn function-btn" onclick="toggleSign()">+/-</button>
+            <button class="btn number-btn" onclick="appendNumber('0')">0</button>
+            <button class="btn number-btn" onclick="appendNumber('.')">.</button>
+            <button class="btn equal-btn" onclick="calculateResult()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = '0';
+        let operator = null;
+        let previousInput = '';
+        let resultDisplayed = false;
+        let memory = 0;
+
+        const resultDisplay = document.getElementById('result');
+
+        function updateDisplay() {
+            resultDisplay.value = currentInput;
+        }
+
+        function appendNumber(number) {
+            if (resultDisplayed) {
+                currentInput = number;
+                resultDisplayed = false;
+            } else {
+                if (currentInput === '0' && number !== '.') {
+                    currentInput = number;
+                } else if (number === '.' && currentInput.includes('.')) {
+                    // Do nothing if '.' is already present
+                } else {
+                    currentInput += number;
+                }
+            }
+            updateDisplay();
+        }
+
+        function appendOperator(op) {
+            if (currentInput === '' && op !== '-') return;
+            if (previousInput !== '' && operator !== null) {
+                calculateResult();
+            }
+            operator = op;
+            previousInput = currentInput;
+            currentInput = '';
+            resultDisplayed = false;
+        }
+
+        function calculateResult() {
+            if (previousInput === '' || currentInput === '' || operator === null) {
+                if (previousInput !== '' && currentInput === '') {
+                    currentInput = previousInput;
+                    updateDisplay();
+                    return;
+                }
+                return;
+            }
+
+            let prev = parseFloat(previousInput);
+            let curr = parseFloat(currentInput);
+            let res;
+
+            switch (operator) {
+                case '+':
+                    res = prev + curr;
+                    break;
+                case '-':
+                    res = prev - curr;
+                    break;
+                case '*':
+                    res = prev * curr;
+                    break;
+                case '/':
+                    if (curr === 0) {
+                        currentInput = 'Error: Divide by 0';
+                        resultDisplayed = true;
+                        updateDisplay();
+                        return;
+                    }
+                    res = prev / curr;
+                    break;
+                case '%':
+                    res = (prev * curr) / 100;
+                    break;
+                default:
+                    return;
+            }
+            currentInput = res.toString();
+            resultDisplayed = true;
+            operator = null;
+            previousInput = '';
+            updateDisplay();
+        }
+
+        function clearResult() {
+            currentInput = '0';
+            operator = null;
+            previousInput = '';
+            resultDisplayed = false;
+            updateDisplay();
+        }
+
+        function clearEntry() {
+            currentInput = '0';
+            resultDisplayed = false;
+            updateDisplay();
+        }
+
+        function backspace() {
+            if (resultDisplayed) {
+                clearResult();
+                return;
+            }
+            currentInput = currentInput.slice(0, -1);
+            if (currentInput === '') {
+                currentInput = '0';
+            }
+            updateDisplay();
+        }
+
+        function toggleSign() {
+            if (currentInput === '0' || currentInput === 'Error') return;
+            currentInput = (parseFloat(currentInput) * -1).toString();
+            updateDisplay();
+        }
+
+        function inverse() {
+            let num = parseFloat(currentInput);
+            if (num === 0) {
+                currentInput = 'Error: Divide by 0';
+            } else {
+                currentInput = (1 / num).toString();
+            }
+            resultDisplayed = true;
+            updateDisplay();
+        }
+
+        function square() {
+            let num = parseFloat(currentInput);
+            currentInput = (num * num).toString();
+            resultDisplayed = true;
+            updateDisplay();
+        }
+
+        function squareRoot() {
+            let num = parseFloat(currentInput);
+            if (num < 0) {
+                currentInput = 'Error: Invalid input';
+            } else {
+                currentInput = Math.sqrt(num).toString();
+            }
+            resultDisplayed = true;
+            updateDisplay();
+        }
+
+        // Memory functions
+        function memoryClear() {
+            memory = 0;
+        }
+
+        function memoryRecall() {
+            currentInput = memory.toString();
+            resultDisplayed = true;
+            updateDisplay();
+        }
+
+        function memoryAdd() {
+            memory += parseFloat(currentInput);
+            resultDisplayed = true;
+            currentInput = '0';
+            updateDisplay();
+        }
+
+        function memorySubtract() {
+            memory -= parseFloat(currentInput);
+            resultDisplayed = true;
+            currentInput = '0';
+            updateDisplay();
+        }
+
+        function memoryStore() {
+            memory = parseFloat(currentInput);
+            resultDisplayed = true;
+            currentInput = '0';
+            updateDisplay();
+        }
+    </script>
+</body>
+</html>
