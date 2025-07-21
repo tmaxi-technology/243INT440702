@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy tính</title> <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center vertically as well without the title pushing it down */
+            min-height: 100vh;
+            background-color: #f0f2f5; /* Light grey body background */
+            margin: 0;
+            /* Removed padding-top as there's no title */
+        }
+
+        .calculator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* No extra padding around the calculator, as it's directly under the title */
+        }
+
+        /* REMOVED .calculator-title CSS as it's no longer needed */
+
+        .calculator {
+            background-color: #fcfcfc; /* Very light, almost white background for the calculator body */
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer, slightly larger shadow */
+            padding: 10px; /* Reduced padding inside the calculator for tighter button layout */
+            width: 320px; /* Adjusted width to match image proportions */
+            overflow: hidden;
+            display: flex; /* Use flexbox for main layout inside calculator */
+            flex-direction: column;
+        }
+
+        .display-area {
+            background: linear-gradient(to bottom, #fefefe, #f1f1f1); /* Subtle gradient */
+            border-radius: 5px;
+            padding: 15px;
+            text-align: right;
+            margin-bottom: 10px; /* Space between display and buttons */
+            font-size: 3em; /* Larger font for main number */
+            font-weight: 300; /* Lighter weight for numbers */
+            color: #333;
+            min-height: 80px; /* Ensure consistent height for display */
+            display: flex;
+            align-items: flex-end; /* Align number to the bottom right */
+            justify-content: flex-end;
+            box-sizing: border-box;
+            border: 1px solid #e0e0e0; /* Subtle border for display */
+            overflow: hidden; /* Prevent text overflow */
+        }
+        .display-area span { /* The actual number text */
+             max-width: 100%;
+             overflow: hidden;
+             text-overflow: ellipsis; /* Add ellipsis if number is too long */
+        }
+
+
+        .memory-buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 memory buttons */
+            gap: 5px; /* Small gap */
+            margin-bottom: 5px; /* Space below memory buttons */
+            padding: 5px 0;
+        }
+
+        .memory-button {
+            background-color: transparent; /* No background */
+            border: none;
+            color: #777; /* Greyed out color */
+            font-size: 0.8em; /* Smaller font */
+            padding: 5px 0;
+            cursor: pointer;
+            text-align: center;
+            transition: color 0.15s ease;
+        }
+
+        .memory-button:hover {
+            color: #333; /* Slightly darker on hover */
+        }
+
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns for main buttons */
+            gap: 8px; /* Gap between buttons */
+        }
+
+        .button {
+            background-color: #fdfdfd; /* Default button background (very light) */
+            border: none; /* No visible border */
+            padding: 18px 0; /* Vertical padding */
+            font-size: 1.3em; /* Button text size */
+            border-radius: 4px; /* Slightly less rounded than before, more like image */
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.15s ease, transform 0.05s ease;
+            color: #333; /* Default text color for numbers/basic functions */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle button shadow */
+            font-weight: 400; /* Normal weight for numbers */
+        }
+
+        .button:hover {
+            background-color: #f0f0f0; /* Lighter hover effect */
+        }
+
+        .button:active {
+            transform: translateY(1px); /* Slight press effect */
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Specific button styles matching the image */
+        .button.special { /* For %, CE, C, backspace, 1/x, x^2, sqrt, +/- */
+            background-color: #f7f7f7; /* Slightly different background for top rows */
+            color: #555; /* Slightly lighter text color */
+        }
+        .button.special:hover {
+            background-color: #eee;
+        }
+
+        .button.operator {
+            background-color: #fdfdfd; /* Same as numbers, operators are blue text */
+            color: #007bff; /* Blue for operators */
+            font-weight: 500; /* Slightly bolder for operators */
+        }
+        .button.operator:hover {
+            background-color: #f0f0f0;
+        }
+
+        .button.equals {
+            background-color: #007bff; /* Vibrant blue for equals button */
+            color: white;
+            grid-column: span 1; /* Standard size */
+            box-shadow: 0 2px 5px rgba(0, 123, 255, 0.25); /* More prominent shadow for equals */
+        }
+        .button.equals:hover {
+            background-color: #0056b3;
+        }
+        .button.equals:active {
+            box-shadow: none; /* Remove shadow on press */
+            transform: translateY(1px);
+        }
+
+        /* Adjustments for specific button icons/text */
+        .button .icon-backspace {
+            font-size: 1.5em; /* Larger for the icon */
+            font-weight: normal;
+        }
+
+        .button[data-value="x^2"] {
+            font-size: 1.1em; /* Adjust font size for x^2 to fit well */
+        }
+        .button[data-value="sqrt"] {
+            font-size: 1.1em; /* Adjust font size for cube root */
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="display-area"><span id="display">0</span></div>
+
+            <div class="memory-buttons">
+                <button class="memory-button">MC</button>
+                <button class="memory-button">MR</button>
+                <button class="memory-button">M+</button>
+                <button class="memory-button">M-</button>
+                <button class="memory-button">MS</button>
+            </div>
+
+            <div class="buttons-grid">
+                <button class="button special" data-value="%">%</button>
+                <button class="button special" id="clearEntry">CE</button>
+                <button class="button special" id="clear">C</button>
+                <button class="button special" id="backspace"><span class="icon-backspace">&#x232B;</span></button> <button class="button special" data-value="1/x">1/x</button>
+                <button class="button special" data-value="x^2">x²</button>
+                <button class="button special" data-value="sqrt">³√x</button>
+                <button class="button operator" data-value="/">÷</button>
+
+                <button class="button" data-value="7">7</button>
+                <button class="button" data-value="8">8</button>
+                <button class="button" data-value="9">9</button>
+                <button class="button operator" data-value="*">×</button>
+
+                <button class="button" data-value="4">4</button>
+                <button class="button" data-value="5">5</button>
+                <button class="button" data-value="6">6</button>
+                <button class="button operator" data-value="-">-</button>
+
+                <button class="button" data-value="1">1</button>
+                <button class="button" data-value="2">2</button>
+                <button class="button" data-value="3">3</button>
+                <button class="button operator" data-value="+">+</button>
+
+                <button class="button special" data-value="toggleSign">+/-</button>
+                <button class="button" data-value="0">0</button>
+                <button class="button special" data-value=".">.</button>
+                <button class="button equals" id="equals">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const display = document.getElementById('display');
+            const buttons = document.querySelectorAll('.buttons-grid .button'); // Target only main buttons
+            const memoryButtons = document.querySelectorAll('.memory-button'); // Target memory buttons separately
+
+            let currentInput = '0';
+            let operator = null;
+            let firstOperand = null;
+            let waitingForSecondOperand = false;
+            let calculationHistory = ''; // To potentially store full expression if needed for future features
+
+            function updateDisplay() {
+                display.textContent = currentInput;
+            }
+
+            // Function to handle number and dot input
+            function handleNumber(value) {
+                if (waitingForSecondOperand) {
+                    currentInput = value;
+                    waitingForSecondOperand = false;
+                } else {
+                    if (value === '.' && currentInput.includes('.')) {
+                        return; // Prevent multiple dots
+                    }
+                    if (currentInput === '0' && value !== '.') {
+                        currentInput = value; // Replace leading zero with new digit
+                    } else {
+                        currentInput += value;
+                    }
+                }
+                updateDisplay();
+            }
+
+            // Function to handle operator input
+            function handleOperator(nextOperator) {
+                const inputValue = parseFloat(currentInput);
+
+                if (operator && waitingForSecondOperand) {
+                    operator = nextOperator; // Allow changing operator before second operand
+                    return;
+                }
+
+                if (firstOperand === null) {
+                    firstOperand = inputValue;
+                } else if (operator) {
+                    const result = operate(firstOperand, inputValue, operator);
+                    currentInput = String(result);
+                    firstOperand = result;
+                }
+
+                waitingForSecondOperand = true;
+                operator = nextOperator;
+                updateDisplay(); // Show intermediate result or first operand
+            }
+
+            // Function to perform arithmetic operations
+            function operate(num1, num2, op) {
+                switch (op) {
+                    case '+':
+                        return num1 + num2;
+                    case '-':
+                        return num1 - num2;
+                    case '*':
+                        return num1 * num2;
+                    case '/':
+                        if (num2 === 0) {
+                            return 'Error: Div by 0';
+                        }
+                        return num1 / num2;
+                    default:
+                        return num2;
+                }
+            }
+
+            // Event listener for main calculation buttons
+            buttons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const value = event.target.dataset.value || event.target.id;
+
+                    if (event.target.classList.contains('operator') && value !== 'equals') {
+                        handleOperator(value);
+                        return;
+                    }
+
+                    switch (value) {
+                        case 'clear': // C (Clear all)
+                            currentInput = '0';
+                            operator = null;
+                            firstOperand = null;
+                            waitingForSecondOperand = false;
+                            updateDisplay();
+                            break;
+                        case 'clearEntry': // CE (Clear current input)
+                            currentInput = '0';
+                            updateDisplay();
+                            break;
+                        case 'backspace':
+                            currentInput = currentInput.slice(0, -1) || '0';
+                            updateDisplay();
+                            break;
+                        case 'equals':
+                            if (firstOperand !== null && operator !== null && !waitingForSecondOperand) {
+                                const result = operate(firstOperand, parseFloat(currentInput), operator);
+                                currentInput = String(result);
+                                firstOperand = null;
+                                operator = null;
+                                waitingForSecondOperand = false;
+                                updateDisplay();
+                            }
+                            break;
+                        case '%':
+                            currentInput = String(parseFloat(currentInput) / 100);
+                            updateDisplay();
+                            break;
+                        case '1/x':
+                            const numInverse = parseFloat(currentInput);
+                            currentInput = numInverse !== 0 ? String(1 / numInverse) : 'Error: Div by 0';
+                            updateDisplay();
+                            break;
+                        case 'x^2':
+                            const numSquare = parseFloat(currentInput);
+                            currentInput = String(numSquare * numSquare);
+                            updateDisplay();
+                            break;
+                        case 'sqrt': // Cube root (³√x)
+                            const numCubeRoot = parseFloat(currentInput);
+                            currentInput = String(Math.cbrt(numCubeRoot));
+                            updateDisplay();
+                            break;
+                        case 'toggleSign':
+                            currentInput = String(parseFloat(currentInput) * -1);
+                            updateDisplay();
+                            break;
+                        case '.':
+                            handleNumber('.');
+                            break;
+                        default: // Numbers
+                            handleNumber(value);
+                            break;
+                    }
+                });
+            });
+
+            // Memory button functionality (optional, basic logging for now)
+            memoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    console.log(`Memory button "${button.textContent}" clicked.`);
+                    // You would implement actual memory operations here (MC, MR, M+, M-, MS)
+                    // This often involves storing a separate 'memory' variable.
+                });
+            });
+
+            updateDisplay(); // Initialize display on load
+        });
+    </script>
+</body>
+</html>
