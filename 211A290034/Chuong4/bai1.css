@@ -1,0 +1,112 @@
+body {
+  align-items: center;
+}
+
+.calculator {
+  background: #000000;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+}
+
+/* Màng hình hiện thì */
+.display {
+  background: #e2e2e2;
+  color: rgb(0, 0, 0);
+  font-size: 2.5rem;
+  text-align: right;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  min-height: 50px;
+}
+
+
+/* Nút dưới màng hình hiện thị */
+.display-wrapper {
+    margin-bottom: 10px;
+}
+  
+.sub-display {
+    font-size: 1rem;
+    color: #aaaaaa;
+    text-align: right;
+    margin-bottom: 5px;
+    min-height: 20px;
+}
+
+.memory-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0px;
+    margin-bottom: 10px;
+}
+
+.btn.mem {
+    color: #ffffff;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    
+    padding: 8px;
+    font-size: 0.9rem;
+    width: 40px;
+    height: 40px;
+    margin: auto; /* căn giữa */
+    border-radius: 50%; /* để khi hover dễ chuyển sang tròn */
+    transition: background 0.2s;
+}
+
+.btn.mem:hover {
+    background: #6e6e6e;
+    border-radius: 50%;
+}
+
+
+
+/* Nút */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  padding: 20px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  background: #ffffff;
+  transition: background 0.2s;
+}
+
+.btn.empty {
+visibility: hidden;
+  pointer-events: none;
+}
+  
+.btn:hover {
+  background: #cfcccc;
+}
+
+.btn.operator {
+  background: #f8f9fc;
+}
+
+.btn.operator:hover {
+  background: #cfd0d4;
+}
+
+.btn.equal {
+  background: #0067c0;
+  grid-column: span 1;
+}
+
+.btn.equal:hover {
+  background: #015baa;
+}
+
+
+  
