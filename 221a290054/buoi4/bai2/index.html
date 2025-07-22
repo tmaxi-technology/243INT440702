@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thông tin sinh viên</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Bài tập 2</h1>
+  
+  <h3>Nhập thông tin sinh viên</h3>
+  <form id="studentForm">
+    <label>MSSV: <input type="text" id="mssv" required></label>
+    <label>Họ tên: <input type="text" id="hoten" required></label>
+    <label>Email: <input type="email" id="email" required></label>
+
+    <div>
+      Giới tính:
+      <label><input type="radio" name="gender" value="Nam" checked> Nam</label>
+      <label><input type="radio" name="gender" value="Nữ"> Nữ</label>
+    </div>
+
+    <label>Nơi sinh:
+      <select id="noisinh">
+        <option>TP.HCM</option>
+        <option>Cần Thơ</option>
+        <option>Đà Nẵng</option>
+        <option>Hà Nội</option>
+      </select>
+    </label>
+
+    <button type="submit">Thêm vào danh sách</button>
+  </form>
+
+  <h3>Danh sách sinh viên</h3>
+  <table id="studentTable">
+    <thead>
+      <tr>
+        <th>MSSV</th>
+        <th>Họ tên</th>
+        <th>Email</th>
+        <th>Giới tính</th>
+        <th>Nơi sinh</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
