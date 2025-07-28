@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+
+    <style>
+        /* CSS bắt đầu từ đây */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            max-width: 900px; /* Điều chỉnh nếu cần */
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .signup-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .signup-section h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #333;
+            /* text-align: center; */ /* Bỏ comment nếu muốn tiêu đề căn giữa */
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .input-group input {
+            width: calc(100% - 30px); /* Điều chỉnh để có khoảng trống cho icon */
+            padding: 12px 12px 12px 45px; /* Điều chỉnh padding trái cho icon */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #007bff;
+        }
+
+        .terms-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .terms-checkbox input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .terms-checkbox a {
+            color: #007bff;
+            text-decoration: none;
+            margin-left: 5px; /* Khoảng cách giữa text và link */
+        }
+
+        .terms-checkbox a:hover {
+            text-decoration: underline;
+        }
+
+        .register-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #6a9ce4; /* Màu xanh nhạt hơn một chút */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            max-width: 150px; /* Điều chỉnh chiều rộng nút */
+        }
+
+        .register-button:hover {
+            background-color: #4a7bdc;
+        }
+
+        .illustration-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #f9f9f9; /* Nền hơi khác cho phần minh họa */
+        }
+
+        .illustration-section img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .already-member {
+            text-align: right; /* Căn phải như trong hình */
+            margin-top: 20px; /* Khoảng cách từ nút Register */
+            font-size: 0.9em;
+        }
+
+        .already-member a {
+            color: #000; /* Màu đen cho text */
+            text-decoration: underline; /* Gạch chân */
+            font-weight: 500; /* Đậm hơn một chút */
+        }
+
+        .already-member a:hover {
+            color: #007bff; /* Thay đổi màu khi hover */
+        }
+
+
+        /* Điều chỉnh responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                max-width: 400px;
+            }
+
+            .illustration-section {
+                display: none; /* Ẩn hình minh họa trên màn hình nhỏ */
+            }
+
+            .signup-section {
+                padding: 30px;
+            }
+
+            .already-member {
+                text-align: center; /* Căn giữa trên màn hình nhỏ */
+            }
+        }
+        /* CSS kết thúc ở đây */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-section">
+            <h2>Sign up</h2>
+            <form>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="John Doe">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Your Email">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Password">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Repeat your password">
+                </div>
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="agreeTerms">
+                    <label for="agreeTerms">I agree all statements in <a href="#">Terms of service</a></label>
+                </div>
+                <button type="submit" class="register-button">Register</button>
+            </form>
+            <div class="already-member">
+                <a href="#">I am already member</a>
+            </div>
+        </div>
+        <div class="illustration-section">
+            <img src=bai11.png" alt="Illustration of a desk with laptop">
+            </div>
+    </div>
+</body>
+</html>
