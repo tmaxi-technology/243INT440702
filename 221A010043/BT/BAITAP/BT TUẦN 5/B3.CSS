@@ -1,0 +1,139 @@
+/* CSS bắt đầu từ đây */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.datepicker-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.datepicker-wrapper h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.date-input-container {
+    width: 300px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+.datepicker-dropdown {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 15px;
+    position: absolute;
+    top: 130px;
+    z-index: 10;
+}
+
+.datepicker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0 5px;
+}
+
+.datepicker-header button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #777;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.datepicker-header button:hover {
+    color: #333;
+}
+
+.datepicker-header .month-year {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #333;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-grid .day-header {
+    font-weight: 500;
+    color: #777;
+    font-size: 0.9em;
+    padding: 8px 0;
+}
+
+.calendar-grid .day-cell {
+    padding: 8px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95em;
+}
+
+.calendar-grid .day-cell.other-month {
+    color: #ccc;
+}
+
+.calendar-grid .day-cell.active {
+    background-color: #5d9cec;
+    color: white;
+    font-weight: 500;
+}
+
+.calendar-grid .day-cell:not(.active):not(.other-month):hover {
+    background-color: #e6e6e6;
+}
+
+.datepicker-footer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.datepicker-footer button {
+    background: none;
+    border: none;
+    font-size: 1.3em;
+    color: #777;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+
+.datepicker-footer button:hover {
+    color: #333;
+}
