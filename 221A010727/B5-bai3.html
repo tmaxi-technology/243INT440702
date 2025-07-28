@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar Datepicker</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Flatpickr CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fc;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 60px;
+    }
+
+    .datepicker-wrapper {
+      text-align: center;
+    }
+
+    .datepicker-label {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .datepicker-input {
+      padding: 12px 20px;
+      width: 300px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .flatpickr-calendar {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .flatpickr-day.today {
+      background-color: #f8f9fc;
+    }
+
+    .flatpickr-day.selected {
+      background: #007bff;
+      color: white;
+    }
+
+    .flatpickr-calendar .flatpickr-months .flatpickr-prev-month i,
+    .flatpickr-calendar .flatpickr-months .flatpickr-next-month i {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .flatpickr-calendar .flatpickr-footer {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+    }
+
+    .flatpickr-footer i {
+      font-size: 1.2rem;
+      color: #d63384;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="datepicker-wrapper">
+    <div class="datepicker-label">Calendar Datepicker</div>
+    <input type="text" id="datepicker" class="datepicker-input" placeholder="Select date & time">
+  </div>
+
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#datepicker", {
+      enableTime: true,
+      dateFormat: "m/d/Y h:i:S K",
+      defaultDate: "2020-12-19T17:00:00",
+      appendTo: document.body,
+      onReady: function(selectedDates, dateStr, instance) {
+        const footer = document.createElement('div');
+        footer.classList.add("flatpickr-footer");
+        footer.innerHTML = `
+          <i class="bi bi-house-door-fill"></i>
+          <i class="bi bi-clock-fill"></i>
+          <i class="bi bi-trash-fill"></i>
+          <i class="bi bi-x-circle-fill"></i>
+        `;
+        instance.calendarContainer.appendChild(footer);
+      }
+    });
+  </script>
+</body>
+</html>

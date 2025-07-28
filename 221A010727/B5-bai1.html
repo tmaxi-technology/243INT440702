@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign Up</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+    }
+
+    .container {
+      display: flex;
+      width: 900px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 40px;
+      border-radius: 10px;
+      justify-content: space-between;
+    }
+
+    .form-container {
+      width: 50%;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form label {
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .checkbox input {
+      margin-right: 10px;
+    }
+
+    .checkbox a {
+      text-decoration: none;
+      color: #555;
+      font-weight: bold;
+    }
+
+    .register-btn {
+      padding: 12px 25px;
+      border: none;
+      background-color: #4d96ff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .image-container {
+      width: 40%;
+      text-align: center;
+      position: relative;
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .already-member {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .already-member a {
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .already-member a:hover {
+      border-bottom: 1px solid #333;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-container, .image-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h1>Sign up</h1>
+      <form>
+        <input type="text" placeholder="John Doe" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="password" placeholder="Password" required>
+        <input type="password" placeholder="Repeat your password" required>
+        
+        <div class="checkbox">
+          <input type="checkbox" required>
+          <label>I agree all statements in <a href="#">Terms of service</a></label>
+        </div>
+
+        <button type="submit" class="register-btn">Register</button>
+      </form>
+    </div>
+    <div class="image-container">
+      <img src="bg.png" alt="Desk Illustration">
+      <div class="already-member">
+        <a href="#">I am already member</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
