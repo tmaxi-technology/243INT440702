@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Lời chứng thực - Bài tập 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.min.css">
+    <style>
+        /* CSS tùy chỉnh của bạn ở đây */
+        body {
+            background-color: #f8f9fa; /* Nền xám nhạt */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .carousel-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 900px; /* Điều chỉnh chiều rộng tối đa */
+            width: 100%;
+            padding: 30px; /* Padding tổng thể bên trong container */
+            position: relative; /* Quan trọng để định vị các nút điều hướng */
+        }
+        .carousel-inner {
+            border-radius: 8px; /* Bo tròn góc cho nội dung slider */
+        }
+        .carousel-item {
+            display: flex;
+            align-items: center;
+            padding: 40px 20px; /* Điều chỉnh padding cho từng item */
+            text-align: center; /* Căn giữa nội dung văn bản */
+        }
+        .testimonial-image {
+            flex: 0 0 30%; /* Chiếm 30% chiều rộng */
+            max-width: 30%;
+            padding-right: 30px; /* Khoảng cách giữa ảnh và text */
+        }
+        .testimonial-image img {
+            width: 100%;
+            border-radius: 50%; /* Làm ảnh tròn */
+            object-fit: cover;
+        }
+        .testimonial-content {
+            flex: 0 0 70%; /* Chiếm 70% chiều rộng */
+            max-width: 70%;
+            padding-left: 30px; /* Khoảng cách giữa ảnh và text */
+            text-align: left; /* Căn trái nội dung lời chứng thực */
+        }
+        .testimonial-content h3 {
+            font-size: 2.2rem; /* Kích thước chữ to cho lời chứng thực */
+            font-weight: 500;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .testimonial-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .testimonial-content .author {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 0;
+        }
+        .testimonial-content .role {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Nút điều hướng tùy chỉnh */
+        .carousel-control-prev,
+        .carousel-control-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            color: #333; /* Màu mũi tên */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1; /* Luôn hiện */
+            transition: background-color 0.3s ease;
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        .carousel-control-prev {
+            left: -20px; /* Đẩy ra ngoài container một chút */
+        }
+        .carousel-control-next {
+            right: -20px; /* Đẩy ra ngoài container một chút */
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-image: none; /* Bỏ icon mặc định của Bootstrap */
+        }
+        .carousel-control-prev .bi,
+        .carousel-control-next .bi {
+            font-size: 1.5rem; /* Kích thước icon Bootstrap */
+            color: #333;
+        }
+
+        /* Chỉ báo slider (indicators) */
+        .carousel-indicators {
+            position: absolute;
+            bottom: -20px; /* Đặt dưới container chính */
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: 0; /* Bỏ margin mặc định */
+            margin-right: 0; /* Bỏ margin mặc định */
+        }
+        .carousel-indicators li {
+            background-color: #ccc; /* Màu chấm chỉ báo */
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px; /* Khoảng cách giữa các chấm */
+            border: none; /* Bỏ border mặc định */
+            opacity: 0.7; /* Độ trong suốt */
+        }
+        .carousel-indicators li.active {
+            background-color: #333; /* Màu chấm khi active */
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .carousel-item {
+                flex-direction: column; /* Xếp chồng ảnh và text trên màn hình nhỏ */
+                text-align: center;
+            }
+            .testimonial-image, .testimonial-content {
+                flex: 0 0 100%;
+                max-width: 100%;
+                padding: 0;
+            }
+            .testimonial-image {
+                margin-bottom: 20px;
+            }
+            .testimonial-image img {
+                width: 150px; /* Kích thước ảnh nhỏ hơn trên di động */
+                height: 150px;
+            }
+            .testimonial-content h3 {
+                font-size: 1.5rem;
+            }
+            .carousel-control-prev,
+            .carousel-control-next {
+                top: auto;
+                bottom: 50px; /* Đặt nút ở dưới trên di động */
+                transform: none;
+                background-color: rgba(255, 255, 255, 0.6);
+            }
+            .carousel-control-prev {
+                left: 20px;
+            }
+            .carousel-control-next {
+                right: 20px;
+            }
+            .carousel-indicators {
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#testimonialCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#testimonialCarousel" data-slide-to="1"></li>
+                <li data-target="#testimonialCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="testimonial-image">
+                        <img src="http://googleusercontent.com/file_content/0" alt="Joy Smith">
+                    </div>
+                    <div class="testimonial-content">
+                        <h3>"Incredible services and amazing customer support"</h3>
+                        <p class="author">― Joy Smith</p>
+                        <p class="role">Project Manager</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/200x200?text=Another+User" alt="Another User">
+                    </div>
+                    <div class="testimonial-content">
+                        <h3>"Highly recommend! Their solutions are truly innovative."</h3>
+                        <p class="author">― Alex Johnson</p>
+                        <p class="role">Software Engineer</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="testimonial-image">
+                        <img src="https://via.placeholder.com/200x200?text=Third+User" alt="Third User">
+                    </div>
+                    <div class="testimonial-content">
+                        <h3>"A game changer for our business. Excellent results!"</h3>
+                        <p class="author">― Sarah Chen</p>
+                        <p class="role">Marketing Director</p>
+                    </div>
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+                <span class="bi bi-arrow-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+                <span class="bi bi-arrow-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
