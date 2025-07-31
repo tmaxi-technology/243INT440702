@@ -1,42 +1,61 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bài tập 3</title>
-    <style>
-        table {
-          border-collapse: collapse;
-          width: 100%;
-        }
-    
-        th, td {
-          padding: 8px;
-          text-align: left;
-          border: 1px solid #ddd;
-        }
-    
-        tr:hover {
-          background-color: #f2f2f2; /* hoặc gray */
-        }
-      </style>
-</head>
-<body>
-    <h2>Bảng với hiệu ứng hover</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calendar Datepicker</title>
 
-    <table>
-     <tr>
-     <th>Tên</th>
-        <th>Tuổi</th>
-     </tr>
-     <tr>
-        <td>Nguyễn Văn A</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td>Trần Thị B</td>
-        <td>22</td>
-    </tr>
-    </table>
-</body>
+    <!-- Flatpickr CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <!-- Theme đẹp giống hình -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        text-align: center;
+        padding-top: 50px;
+      }
+      .datepicker-container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        display: inline-block;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      input {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="datepicker-container">
+      <h2>Calendar Datepicker</h2>
+      <input id="datepicker" type="text" placeholder="Chọn ngày và giờ" />
+    </div>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      flatpickr("#datepicker", {
+        enableTime: true, // Bật chọn giờ
+        dateFormat: "m/d/Y h:i:S K", // Định dạng giống ảnh
+        defaultDate: new Date(), // Ngày mặc định là hôm nay
+      });
+    </script>
+  </body>
 </html>
