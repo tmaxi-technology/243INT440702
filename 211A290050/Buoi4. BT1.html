@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f3f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 400px;
+            background-color: #fff;
+        }
+
+        .display {
+            background-color: #f9f9f9;
+            padding: 20px;
+            font-size: 40px;
+            text-align: right;
+            border-bottom: 1px solid #ccc;
+            overflow-x: auto;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            padding: 10px;
+        }
+
+        .buttons button {
+            padding: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f4f4f4;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .buttons button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .buttons button.operator {
+            background-color: #d6e4ff;
+        }
+
+        .buttons button.equal {
+            background-color: #0066ff;
+            color: #fff;
+            grid-column: span 1;
+        }
+
+        .buttons button.wide {
+            grid-column: span 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+        <button>MC</button>
+        <button>MR</button>
+        <button>M+</button>
+        <button>M-</button>
+        <button>MS</button>
+
+        <button>%</button>
+        <button>CE</button>
+        <button onclick="clearDisplay()">C</button>
+        <button>⌫</button>
+        <button class="operator" onclick="appendOperator('/')">÷</button>
+
+        <button>1/x</button>
+        <button>x²</button>
+        <button>√</button>
+        <button></button> <!-- ô trống giống hình -->
+
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button class="operator" onclick="appendOperator('*')">×</button>
+
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button class="operator" onclick="appendOperator('-')">−</button>
+
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button class="operator" onclick="appendOperator('+')">+</button>
+
+        <button>+/-</button>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="appendNumber('.')">.</button>
+        <button class="equal" onclick="calculate()">=</button>
+    </div>
+</div>
+
+<script>
+    let display = document.getElementById('display');
+    let currentInput = '';
+    let operatorSet = false;
+
+    function appendNumber(number) {
+        if (display.innerText === '0' || operatorSet) {
+            display.innerText = number;
+            operatorSet = false;
+        } else {
+            display.innerText += number;
+        }
+        currentInput = display.innerText;
+    }
+
+    function appendOperator(operator) {
+        display.innerText += ' ' + operator + ' ';
+        operatorSet = true;
+    }
+
+    function clearDisplay() {
+        display.innerText = '0';
+        currentInput = '';
+    }
+
+    function calculate() {
+        try {
+            display.innerText = eval(display.innerText.replace(/×/g, '*').replace(/÷/g, '/'));
+        } catch (e) {
+            display.innerText = 'Error';
+        }
+    }
+</script>
+
+</body>
+</html>
