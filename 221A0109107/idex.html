@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quản lý Bệnh viện</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <div>
+    <h1>Quản Lí Bệnh Viện</h1>
+    <img src="bvq8.jpg" alt="Ảnh Bệnh Viện" />
+    <div class="header-overlay"></div>
+  </div>
+
+  <body>
+    <h1>Danh sách bệnh nhân</h1>
+    <form id="patientForm">
+      <input type="text" id="id" placeholder="Mã bệnh nhân" />
+      <input type="text" id="name" placeholder="Họ tên" />
+      <input type="number" id="age" placeholder="Tuổi" />
+      <select id="gender">
+        <option value="">Chọn giới tính</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+      </select>
+      <input type="file" id="avatar" accept="image/*" />
+      <img id="preview" style="width: 100px; height: 100px; display: none; border-radius: 50%; object-fit: cover" />
+      <input type="text" id="symptom" placeholder="Triệu chứng" />
+      <button type="submit" id="submitBtn">Thêm bệnh nhân</button>
+    </form>
+
+    <table id="patientTable">
+      <thead>
+        <tr>
+          <th>Mã</th>
+          <th>Họ tên</th>
+          <th>Tuổi</th>
+          <th>Giới tính</th>
+          <th>Ảnh</th>
+          <th>Triệu chứng</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BN001</td>
+          <td>Nguyễn Văn A</td>
+          <td>45</td>
+          <td>Nam</td>
+          <td><img src="219597310.jpg" width="50" /></td>
+          <td>Sốt cao</td>
+          <td>
+            <button class="editBtn" onclick="editPatient(0)">Sửa</button>
+            <button class="deleteBtn" onclick="deletePatient(0)">Xoá</button>
+          </td>
+        </tr>
+        <tr>
+          <td>BN002</td>
+          <td>Trần Thị B</td>
+          <td>32</td>
+          <td>Nữ</td>
+          <td><img src="avt2.jpg" width="50" /></td>
+          <td>Ho khan</td>
+          <td>
+            <button class="editBtn" onclick="editPatient(1)">Sửa</button>
+            <button class="deleteBtn" onclick="deletePatient(1)">Xoá</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script src="script.js"></script>
+  </body>
+</html>
